@@ -15,3 +15,13 @@ How does scikit work?
 What frameworks work with scikit?
 
 What is required to replace the machine learning capability provided by scikit?
+
+
+### Action Log
+
+Monday:
+* Decided on MVP how to reach that
+* Webscraping - python code that efficiently automated downloading several images
+from an online image bank to our local repo
+* Initial scikit setup - provided instructions on how to set up and followed steps
+to for intial image processing
