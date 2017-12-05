@@ -31,6 +31,8 @@ We set out to answer these three key questions:
   1. Which feature extraction to do first? HOG, Pixel, Colour Histogram etc
   2. What is the order of the scikit pipeline?
   3. How does classification work?
-    - Do we implement 'supervised'
-    - Do we implement 'unsupervised'
+      - Do we implement 'supervised'
+      - Do we implement 'unsupervised'
+  4. Imported algorithm from scikit-learn to process an 'unseen' image vs our image bank and return a value. 0 => Lowry, 1 => Turner. Our program successfully assigned the correct value to the unseen image. 
+  5. MVP reached
     
