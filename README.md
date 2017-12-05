@@ -20,8 +20,17 @@ What is required to replace the machine learning capability provided by scikit?
 ### Action Log
 
 Monday:
-* Decided on MVP how to reach that
+* Decided on MVP and how to reach MVP
 * Webscraping - python code that efficiently automated downloading several images
 from an online image bank to our local repo
-* Initial scikit setup - provided instructions on how to set up and followed steps
-to for intial image processing
+* Initial scikit setup - provided instructions on how to set up, and followed steps
+for intial image processing
+
+Tuesday:
+We set out to answer these three key questions:
+  1. Which feature extraction to do first? HOG, Pixel, Colour Histogram etc
+  2. What is the order of the scikit pipeline?
+  3. How does classification work?
+    - Do we implement 'supervised'
+    - Do we implement 'unsupervised'
+    
