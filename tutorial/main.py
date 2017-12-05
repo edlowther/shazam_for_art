@@ -1,11 +1,8 @@
-import skimage
 from skimage import io
-filename = './images/lowry_0.jpg'
-lowry_0 = io.imread(filename)
-print(lowry_0.shape)
-print(lowry_0.size)
-print(lowry_0.shape[0] * lowry_0.shape[1]  * lowry_0.shape[2])
-print(lowry_0.mean())
 
-lowries = io.imread_collection('./images/lowry_*.jpg')
-print(lowries[0])
+from scripts.painting_processor import PaintingProcessor
+from scripts.model_creator import ModelCreator
+
+clf = ModelCreator().build()
+test_image = io.imread('./test_images/turner_121.jpg')
+print(clf.predict([PaintingProcessor(test_image).flatten()]))
