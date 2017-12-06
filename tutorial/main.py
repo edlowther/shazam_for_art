@@ -7,6 +7,8 @@ clf = joblib.load('model.pkl')
 print(clf.predict([PaintingProcessor(test_image).flatten()]))
 
 
-# import pickle
-# s = pickle.dump(clf)
-# clf2 = pickle.loads(s)
+print(clf.predict([PaintingProcessor(test_image).flatten()]))
+
+# test_image = io.imread('./images/hopper_124.jpg')
+# print(test_image)
+# print(test_image.shape)

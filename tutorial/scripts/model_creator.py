@@ -12,8 +12,12 @@ class ModelCreator:
 
     def load_data(self):
         paintings = io.imread_collection('./images/*.jpg')
+        filenames = os.listdir('./images')
         data = []
+        filenames_index = 0
         for painting in paintings:
+            print("Loading:", filenames[filenames_index])
+            filenames_index += 1
             painting_flattened = PaintingProcessor(painting).flatten()
             data.append(painting_flattened)
         return data
@@ -26,12 +30,14 @@ class ModelCreator:
                 targets.append(0)
             elif "turner" in filename:
                 targets.append(1)
-            # elif "rembrandt" in filename:
-            #     targets.append(2)
-            # elif "monet" in filename:
-            #     targets.append(3)
-            # elif "constable" in filename:
-            #     targets.append(4)
+            elif "rembrandt" in filename:
+                targets.append(2)
+            elif "monet" in filename:
+                targets.append(3)
+            elif "hopper" in filename:
+                targets.append(4)
+            elif "constable" in filename:
+                targets.append(5)
 
         return targets
 
