@@ -26,18 +26,20 @@ class ModelCreator:
         targets = []
 
         for filename in os.listdir('./images'):
-            if "lowry" in filename:
+            if "constable" in filename:
                 targets.append(0)
-            elif "turner" in filename:
+            elif "hopper" in filename:
                 targets.append(1)
-            elif "rembrandt" in filename:
+            elif "lowry" in filename:
                 targets.append(2)
             elif "monet" in filename:
                 targets.append(3)
-            elif "hopper" in filename:
+            elif "rembrandt" in filename:
                 targets.append(4)
-            elif "constable" in filename:
+            elif "rubens" in filename:
                 targets.append(5)
+            elif "turner" in filename:
+                targets.append(6)
 
         return targets
 
