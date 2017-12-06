@@ -3,7 +3,7 @@ from scripts.wikiartwork_downloader import WikiartworkDownloader
 
 from scripts.wikiart_pages.hopper import hopper
 
-# artwork_downloader = WikiartworkDownloader(
+# artwork_downloader = ArtworkDownloader(
 #     base_url="https://artuk.org/discover/artworks/view_as/grid/search/makers:laurence-stephen-lowry-18871976/page/9",
 #     artist_name="lowry"
 # )
