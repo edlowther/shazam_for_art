@@ -6,7 +6,7 @@ from sklearn.neural_network import MLPClassifier
 import os
 
 from scripts.painting_processor import PaintingProcessor
-
+from scripts.artist_lookup import artist_lookup
 
 class ModelCreator:
 
@@ -26,24 +26,17 @@ class ModelCreator:
         targets = []
 
         for filename in os.listdir('./images'):
-            if "constable" in filename:
-                targets.append(0)
-            elif "hopper" in filename:
-                targets.append(1)
-            elif "lowry" in filename:
-                targets.append(2)
-            elif "monet" in filename:
-                targets.append(3)
-            elif "rembrandt" in filename:
-                targets.append(4)
-            elif "rubens" in filename:
-                targets.append(5)
-            elif "turner" in filename:
-                targets.append(6)
+            for artist in artist_lookup:
+                if artist in filename:
+                    artist_number = artist_lookup[artist]
+                    targets.append(artist_number)
 
         return targets
 
-    def build(self):
-        clf = tree.DecisionTreeClassifier()
-        clf = clf.fit(self.load_data(), self.define_targets())
+    def build(self, clf_type='tree'):
+        if clf_type == 'tree':
+            clf = tree.DecisionTreeClassifier()
+        elif clf_type == 'neural_network':
+            clf = MLPClassifier()
+        clf.fit(self.load_data(), self.define_targets())
         return clf
