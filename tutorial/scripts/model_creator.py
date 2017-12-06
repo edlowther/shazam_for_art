@@ -26,10 +26,12 @@ class ModelCreator:
                 targets.append(0)
             elif "turner" in filename:
                 targets.append(1)
-            elif "rembrandt" in filename:
-                targets.append(2)
-            elif "monet" in filename:
-                targets.append(3)
+            # elif "rembrandt" in filename:
+            #     targets.append(2)
+            # elif "monet" in filename:
+            #     targets.append(3)
+            # elif "constable" in filename:
+            #     targets.append(4)
 
         return targets
 

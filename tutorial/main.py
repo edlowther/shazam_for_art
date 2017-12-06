@@ -1,8 +1,12 @@
 from skimage import io
-
 from scripts.painting_processor import PaintingProcessor
-from scripts.model_creator import ModelCreator
+from sklearn.externals import joblib
 
-clf = ModelCreator().build()
-test_image = io.imread('./test_images/rembrandt_22.jpg')
+test_image = io.imread('./test_images/lowry_179.jpg')
+clf = joblib.load('model.pkl')
 print(clf.predict([PaintingProcessor(test_image).flatten()]))
+
+
+# import pickle
+# s = pickle.dump(clf)
+# clf2 = pickle.loads(s)
