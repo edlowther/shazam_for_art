@@ -1,38 +1,20 @@
-from skimage import io
-from scripts.painting_processor import PaintingProcessor
-from sklearn.externals import joblib
 import os
+import glob
 
+from scripts.stats_generator import StatsGenerator
 from scripts.artist_lookup import artist_lookup
 
-sample_images = []
+clf_type = "neural_network"
 
 test_image_filenames = os.listdir('./test_images')
-for test_image_filename in test_image_filenames:
-    test_image = io.imread('./test_images/' + test_image_filename)
-    test_image_flattened = PaintingProcessor(test_image).flatten()
-    sample_images.append(test_image_flattened)
+stats_generator = StatsGenerator(test_image_filenames, clf_type)
+stats_generator.get_accuracy_of_model()
 
-clf = joblib.load('./models/neural_network.pkl')
-
-results = clf.predict(sample_images)
-
-index = 0
-
-total_number_of_tests = len(test_image_filenames)
-correct = 0.0
-
-for result in results:
-    artist = test_image_filenames[index].split("_")[0]
-    artist_number = artist_lookup[artist]
-    print(artist)
-    print(result == artist_number)
-    if result == artist_number:
-        correct += 1
-    index += 1
-
-print(correct / total_number_of_tests * 100)
-print("based on a total of ", total_number_of_tests, " tests")
+# for artist_name in artist_lookup:
+# number_to_keep = 80
+# for artist_name in artist_lookup:
+#     for filename in glob.glob('./images/{}*.jpg'.format(artist_name))[number_to_keep:]:
+#         os.rename(filename, filename.replace("/images/", "/images_all/"))
 
 # test_image = io.imread('./images/hopper_124.jpg')
 # print(test_image)
