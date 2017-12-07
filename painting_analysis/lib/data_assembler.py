@@ -5,11 +5,16 @@ from random import shuffle
 from painting_analysis.lib.artist_lookup import ArtistLookup
 
 class DataAssembler:
-    def __init__(self):
+    def __init__(self, painting_processor_class):
         self.artist_lookup = ArtistLookup().golden_copy
+        self.painting_processor_class = painting_processor_class
 
     def load_data(self):
         self._move_files()
+        training_data = []
+        for filename in os.listdir('./images/training_data'):
+            training_data.append(self.painting_processor_class(filename).flatten())
+        return training_data
 
     def load_targets(self):
         targets = []
