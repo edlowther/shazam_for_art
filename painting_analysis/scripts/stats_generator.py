@@ -14,6 +14,7 @@ class StatsGenerator():
     def get_images_to_test(self):
         test_images = []
         for test_image_filename in self.test_image_filenames:
+            print(test_image_filename)
             test_image = io.imread('./test_images/' + test_image_filename)
             test_image_flattened = PaintingProcessor(test_image).flatten()
             test_images.append(test_image_flattened)

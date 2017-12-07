@@ -3,6 +3,7 @@ from skimage import io
 from skimage.transform import resize
 from sklearn import tree
 from sklearn.neural_network import MLPClassifier
+from sklearn import svm
 import os
 
 from scripts.painting_processor import PaintingProcessor
@@ -38,5 +39,7 @@ class ModelCreator:
             clf = tree.DecisionTreeClassifier()
         elif clf_type == 'neural_network':
             clf = MLPClassifier()
+        elif clf_type == 'svm':
+            clf = svm.SVC()
         clf.fit(self.load_data(), self.define_targets())
         return clf

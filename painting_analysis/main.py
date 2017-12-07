@@ -4,7 +4,7 @@ import glob
 from scripts.stats_generator import StatsGenerator
 from scripts.artist_lookup import artist_lookup
 
-clf_type = "neural_network"
+clf_type = "svm"
 
 test_image_filenames = os.listdir('./test_images')
 stats_generator = StatsGenerator(test_image_filenames, clf_type)
