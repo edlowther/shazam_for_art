@@ -44,6 +44,8 @@ We set out to answer these three key questions:
 Wednesday: 
   We included and compared 3 algorithms to check the artist of a painting. From sklearn we imported DecisionTree, SVM and Neural_Network. The results were as follows: 
 
+![screen shot 2017-12-08 at 10 56 07](https://user-images.githubusercontent.com/27693622/33763499-9d63ab94-dc08-11e7-8274-a5e277f8d2b9.png)
+
 At a glance svm_pixels appeared to be the most effective algorithm in terms of predicting the correct artist. This was a big break through as we had achieved 50% accuracy. 
 
 Thursday: 
