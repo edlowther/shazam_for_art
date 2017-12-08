@@ -2,9 +2,10 @@ import os
 from glob import glob
 
 from painting_analysis.lib.artist_lookup import ArtistLookup
+from painting_analysis.lib.painting_processor import PaintingProcessor
 
 class DataLoader:
-    def __init__(self, method, directory_path, painting_processor_class):
+    def __init__(self, method, directory_path, painting_processor_class=PaintingProcessor):
         self.method = method
         self.directory_path = directory_path
         self.painting_processor_class = painting_processor_class

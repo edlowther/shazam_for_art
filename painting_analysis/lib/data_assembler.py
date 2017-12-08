@@ -8,20 +8,20 @@ from painting_analysis.lib.data_loader import DataLoader
 from painting_analysis.lib.artist_lookup import ArtistLookup
 
 class DataAssembler:
-    def __init__(self, method, reshuffle_training_data=True, painting_processor_class=PaintingProcessor):
+    def __init__(self, method="flatten_pixels", reshuffle_training_data=True, painting_processor_class=PaintingProcessor):
         self.artist_lookup = ArtistLookup().golden_copy
         self.reshuffle_training_data = reshuffle_training_data
         self.data_loader = DataLoader(method, './images/training_data/', painting_processor_class)
 
     def load_data(self):
         if self.reshuffle_training_data:
-            self._move_files()
+            self.move_files()
         return self.data_loader.load_paintings()
 
     def load_targets(self):
         return self.data_loader.load_targets()
 
-    def _move_files(self):
+    def move_files(self):
         for filename in glob.glob('./images/training_data/*'):
             os.remove(filename)
         for filename in glob.glob('./images/test_data/*'):
