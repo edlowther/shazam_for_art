@@ -13,7 +13,7 @@
 5. Evaluating some algorithms.
 6. Making some predictions.
 
-## I installed the following:
+## We installed the following:
 
 * scipy
 * numpy
