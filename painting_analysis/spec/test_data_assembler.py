@@ -9,16 +9,16 @@ class MockPaintingProcessor:
     def __init__(self, painting):
         self.increment()
 
-    def flatten(self):
+    def flatten_pixels(self):
         pass
-    
+
     @classmethod
     def increment(cls):
         cls.initialised_count += 1
 
 @pytest.fixture
 def data_assembler():
-    return DataAssembler(MockPaintingProcessor)
+    return DataAssembler("flatten_pixels", reshuffle_training_data=True, painting_processor_class=MockPaintingProcessor)
 
 @pytest.fixture
 def artist_lookup():
@@ -46,9 +46,9 @@ def test_load_data_moves_20_paintings_by_each_artist_into_the_test_data_folder(d
         assert len(glob.glob('images/test_data/' + artist + '*')) == 20
 
 def test_load_data_makes_800_painting_processor_instances(data_assembler):
-    data_assembler.painting_processor_class.initialised_count = 0
+    data_assembler.data_loader.painting_processor_class.initialised_count = 0
     data_assembler.load_data()
-    assert data_assembler.painting_processor_class.initialised_count == 800
+    assert data_assembler.data_loader.painting_processor_class.initialised_count == 800
 
 def test_load_targets_creates_a_list_with_800_elements(data_assembler):
     targets = data_assembler.load_targets()

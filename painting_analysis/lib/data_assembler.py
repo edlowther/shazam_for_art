@@ -2,26 +2,24 @@ import glob
 import os
 import shutil
 from random import shuffle
+
+from painting_analysis.lib.painting_processor import PaintingProcessor
+from painting_analysis.lib.data_loader import DataLoader
 from painting_analysis.lib.artist_lookup import ArtistLookup
 
 class DataAssembler:
-    def __init__(self, painting_processor_class):
+    def __init__(self, method, reshuffle_training_data=True, painting_processor_class=PaintingProcessor):
         self.artist_lookup = ArtistLookup().golden_copy
-        self.painting_processor_class = painting_processor_class
+        self.reshuffle_training_data = reshuffle_training_data
+        self.data_loader = DataLoader(method, './images/training_data/', painting_processor_class)
 
     def load_data(self):
-        self._move_files()
-        training_data = []
-        for filename in os.listdir('./images/training_data'):
-            training_data.append(self.painting_processor_class(filename).flatten())
-        return training_data
+        if self.reshuffle_training_data:
+            self._move_files()
+        return self.data_loader.load_paintings()
 
     def load_targets(self):
-        targets = []
-        for filename in os.listdir('./images/training_data'):
-            artist_name = filename.split("_")[0]
-            targets.append(self.artist_lookup[artist_name])
-        return targets
+        return self.data_loader.load_targets()
 
     def _move_files(self):
         for filename in glob.glob('./images/training_data/*'):
