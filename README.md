@@ -40,3 +40,40 @@ We set out to answer these three key questions:
       - Do we implement 'unsupervised'
   4. Imported algorithm from scikit-learn to process an 'unseen' image vs our image bank and return a value. 0 => Lowry, 1 => Turner. Our program successfully assigned the correct value to the unseen image.
   5. MVP reached
+ 
+ Wednesday:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ##User Stories:
+ 
+ ```
+ As a User 
+ So that I can identify a picture/ artwork piece
+ I want to be able to upload an image of this picture/artwork piece
+ 
+ As a User 
+ So that I can learn who the artist is
+ I want receive the name of the artist on screen
+  
+ As a User
+ So that I can save search logs
+ I want to be able to sign in/sign out
+ 
+ As a User 
+ So that I can learn more about art/artists
+ I want to be reccomended more information by the app
+ 
+ ```
+ 
+ 
+ 
+
+ 
+  
