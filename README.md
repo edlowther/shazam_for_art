@@ -40,40 +40,24 @@ We set out to answer these three key questions:
       - Do we implement 'unsupervised'
   4. Imported algorithm from scikit-learn to process an 'unseen' image vs our image bank and return a value. 0 => Lowry, 1 => Turner. Our program successfully assigned the correct value to the unseen image.
   5. MVP reached
- 
- Wednesday:
- 
- 
- 
- 
- 
- 
- 
- 
- 
- ##User Stories:
- 
- ```
- As a User 
- So that I can identify a picture/ artwork piece
- I want to be able to upload an image of this picture/artwork piece
- 
- As a User 
- So that I can learn who the artist is
- I want receive the name of the artist on screen
   
- As a User
- So that I can save search logs
- I want to be able to sign in/sign out
- 
- As a User 
- So that I can learn more about art/artists
- I want to be reccomended more information by the app
- 
- ```
- 
- 
- 
+Wednesday: 
+  We included and compared 3 algorithms to check the artist of a painting. From sklearn we imported DecisionTree, SVM and Neural_Network. The results were as follows: 
+  
+  timestamp,method,number_of_tests,total_accuracy,constable,hopper,lowry,monet,rembrandt,rubens,turner
+2017-12-06T16:21:47,tree,140,29.3,35.0,20.0,25.0,25.0,45.0,45.0,10.0
+2017-12-06T16:23:12,neural_network,140,21.4,0.0,50.0,0.0,0.0,0.0,100.0,0.0
+2017-12-06T17:08:16,tree_hog,140,33.6,40.0,30.0,20.0,40.0,55.0,20.0,30.0
+2017-12-06T17:10:06,neural_network_hog,140,20.0,5.0,0.0,0.0,0.0,100.0,0.0,35.0
+2017-12-06T17:35:30,svm_hog,140,24.3,35.0,0.0,10.0,30.0,90.0,5.0,0.0
+2017-12-06T17:45:35,svm_pixels,140,50.0,60.0,30.0,30.0,30.0,85.0,50.0,65.0
 
- 
-  
+At a glance svm_pixels appeared to be the most effective algorithm in terms of predicting the correct artist. This was a big break through as we had achieved 50% accuracy. 
+
+Thursday: 
+We tested existing code and created an effective TDD with higher test coverage in our analysis branch. We also researched Django using tutorials and began to build our front end website with Django. 
+
+
+
+
+
