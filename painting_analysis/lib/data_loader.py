@@ -1,4 +1,5 @@
 import os
+from glob import glob
 
 from painting_analysis.lib.artist_lookup import ArtistLookup
 
@@ -12,14 +13,16 @@ class DataLoader:
     def load_paintings(self):
         data = []
         for filename in os.listdir(self.directory_path):
-            filepath = self.directory_path + filename
-            chosen_processing_method = getattr(self.painting_processor_class(filepath), self.method)
-            data.append(chosen_processing_method())
+            if not ".DS_Store" in filename:
+                filepath = self.directory_path + filename
+                chosen_processing_method = getattr(self.painting_processor_class(filepath), self.method)
+                data.append(chosen_processing_method())
         return data
 
     def load_targets(self):
         targets = []
         for filename in os.listdir(self.directory_path):
-            artist_name = filename.split("_")[0]
-            targets.append(self.artist_lookup[artist_name])
+            if not ".DS_Store" in filename:
+                artist_name = filename.split("_")[0]
+                targets.append(self.artist_lookup[artist_name])
         return targets
