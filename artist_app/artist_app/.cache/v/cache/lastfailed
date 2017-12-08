@@ -1,6 +1,0 @@
-{
-  "uploader/tests.py": true,
-  "uploader/tests.py::PictureTest": true,
-  "uploader/tests.py::PictureTest::test_add_picture": true,
-  "uploader/tests.py::TestCase": true
-}
