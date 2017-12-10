@@ -14,7 +14,7 @@ class StatsGenerator:
         self.artist_lookup = ArtistLookup().golden_copy
 
     def get_accuracy_of_model(self):
-        test_images = self.data_loader.load_paintings()
+        test_images, targets = self.data_loader.load_paintings_and_targets()
         clf = joblib.load('./models/{}_{}_v3.pkl'.format(self.clf_type, self.method))
         results = clf.predict(test_images)
 
@@ -30,7 +30,7 @@ class StatsGenerator:
                 'total': 0.0
             }
 
-        for result, target in zip(results, self.data_loader.load_targets()):
+        for result, target in zip(results, targets()):
             for artist in self.artist_lookup:
                 if self.artist_lookup[artist] == target:
                     artist_name = artist
