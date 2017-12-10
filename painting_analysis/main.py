@@ -1,13 +1,13 @@
 import os
 import glob
 
-from scripts.stats_generator import StatsGenerator
-from scripts.artist_lookup import artist_lookup
+from lib.stats_generator import StatsGenerator
+from lib.artist_lookup import artist_lookup
 
 clf_type = "svm"
-
-test_image_filenames = os.listdir('./test_images')
-stats_generator = StatsGenerator(test_image_filenames, clf_type)
+method = "flatten_pixels"
+test_image_folder = "./images/test_data"
+stats_generator = StatsGenerator(test_image_folder, clf_type, method)
 stats_generator.get_accuracy_of_model()
 
 # for artist_name in artist_lookup:

@@ -7,10 +7,10 @@ from painting_analysis.lib.data_loader import DataLoader
 from painting_analysis.lib.artist_lookup import ArtistLookup
 
 class StatsGenerator:
-    def __init__(self, clf_type, method):
+    def __init__(self, test_image_folder, clf_type, method):
         self.clf_type = clf_type
         self.method = method
-        self.data_loader = DataLoader(method, './images/test_data/', PaintingProcessor)
+        self.data_loader = DataLoader(method, test_image_folder, PaintingProcessor)
         self.artist_lookup = ArtistLookup().golden_copy
 
     def get_accuracy_of_model(self):
