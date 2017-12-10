@@ -12,6 +12,7 @@ from scripts.wikiart_pages.van_gogh import van_gogh
 #     artist_name="lowry"
 # )
 # artwork_downloader.save_artworks()
-
-wikiartwork_downloader = WikiartworkDownloader("van-gogh", van_gogh)
-wikiartwork_downloader.save_artworks()
+artists = {"hopper": hopper, "monet": monet, "rothko": rothko, "kandinsky": kandinsky, "van-gogh": van_gogh}
+for artist_name, artist_wikiartpage  in artists.items():
+    wikiartwork_downloader = WikiartworkDownloader(artist_name, artist_wikiartpage)
+    wikiartwork_downloader.save_artworks()
