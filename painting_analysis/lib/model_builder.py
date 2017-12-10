@@ -27,5 +27,6 @@ class ModelBuilder:
         if self.preloaded_data and self.preloaded_targets:
             clf.fit(self.preloaded_data, self.preloaded_targets)
         else:
-            clf.fit(self.data_assembler.load_data(), self.data_assembler.load_targets())
+            data, targets = self.data_assembler.load_data_and_targets()
+            clf.fit(data, targets)
         return clf

@@ -4,6 +4,9 @@ from skimage.transform import resize
 from itertools import chain
 from skimage.color import rgb2gray
 
+class WrongColourDepth(Exception):
+    pass
+
 class PaintingProcessor:
     def __init__(self, image_filename):
         self.image = io.imread(image_filename)
@@ -15,6 +18,8 @@ class PaintingProcessor:
         painting_flattened = []
         for row in self.resize_painting():
             for pixel in row:
+                if str(type(pixel)) != "<class 'numpy.ndarray'>":
+                    raise WrongColourDepth()
                 for colour in pixel:
                     painting_flattened.append(colour)
         return painting_flattened

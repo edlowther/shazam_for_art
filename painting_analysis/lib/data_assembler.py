@@ -13,13 +13,10 @@ class DataAssembler:
         self.reshuffle_training_data = reshuffle_training_data
         self.data_loader = DataLoader(method, './images/training_data/', painting_processor_class)
 
-    def load_data(self):
+    def load_data_and_targets(self):
         if self.reshuffle_training_data:
             self.move_files()
-        return self.data_loader.load_paintings()
-
-    def load_targets(self):
-        return self.data_loader.load_targets()
+        return self.data_loader.load_paintings_and_targets()
 
     def move_files(self):
         for filename in glob.glob('./images/training_data/*'):
