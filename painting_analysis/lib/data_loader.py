@@ -20,10 +20,10 @@ class DataLoader:
                 try:
                     filepath = self.directory_path + filename
                     chosen_processing_method = getattr(self.painting_processor_class(filepath), self.method)
-                    data = chosen_processing_method()
+                    painting_data = chosen_processing_method()
                     artist_name = filename.split("_")[0]
                     targets.append(self.artist_lookup[artist_name])
-                    data.append(data)
+                    data.append(painting_data)
                     print(".", end="", flush=True)
                 except WrongColourDepth as e:
                     print ("\nerror processing", filename, "-", type(e))
