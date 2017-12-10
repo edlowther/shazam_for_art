@@ -29,13 +29,13 @@ class WikiartworkDownloader:
     def get_artwork_url(self, href):
         painting_response = requests.get(href)
         painting_html = html.fromstring(painting_response.text)
-        time.sleep(1)
+        # time.sleep(1)
         artwork_url = False
         try:
             artwork_url = painting_html.cssselect("#image-link")[0].get("href")
         except:
             print("artwork_url not found")
-        time.sleep(1)
+        # time.sleep(1)
         return artwork_url
 
     def save_file(self, artwork_url, painting_count):
@@ -47,4 +47,4 @@ class WikiartworkDownloader:
             urllib.request.urlretrieve(artwork_url, save_to)
         except:
             print("save file failed", artwork_url, save_to)
-        time.sleep(1)
+        # time.sleep(1)
