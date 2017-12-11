@@ -17,4 +17,4 @@ def new(request):
     painting = request.FILES['painting']
     path = default_storage.save('tmp/test.jpg', ContentFile(painting.read()))
     tmp_file = os.path.join(settings.MEDIA_ROOT, path)
-    return render(request, 'image_uploader/success.html')
+    return render(request, 'image_uploader/success.html', {"image_filename": path})
