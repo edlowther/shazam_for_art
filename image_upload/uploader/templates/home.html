@@ -1,20 +1,39 @@
-<!-- <div style="padding:40px;margin:40px;border:1px solid #ccc">
-    <h1>picture</h1>
-    <form action="{{ img.pic.url }}" method="post" enctype="multipart/form-data">
-        {% csrf_token %} {{form}}
-        <input type="submit" value="Upload" />
-    </form>
-    {% for img in images %}
-        {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
-        ({{img.upload_date}})<hr />
-    {% endfor %}
-</div> -->
-
+<html>
+  <head>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+    <body>
+        <section id="cover">
+            <div id="cover-caption">
+                <div id="container" class="container">
+                  <div style="padding:40px;margin:40px;border:1px solid #ccc">
+                    <title>Picture</title>
+                      <h1>Upload your Picture to Shart</h1>
+                      <form action="{{ img.pic.url }}" method="post" enctype="multipart/form-data" class="form-inline justify-content-center">
+                        <div class="form-group">
+                          {% csrf_token %} {{form}}
+                          <input type="submit" value="Upload" class="btn btn-success " />
+                        <div>
+                      </form>
+                      <div class="form-group">
+                      {% for img in images %}
+                          {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
+                          ({{img.upload_date}})<hr />
+                      {% endfor %}
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+      </body>
+</html>
 
 {% load staticfiles %}
 
 
-<html>
+
+<!-- <html>
     <head>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -38,11 +57,11 @@
             </form>
           <div>
           </div>
-            {% for img in images %}
-                {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
-                ({{img.upload_date}})<hr />
-            {% endfor %}
+          {% for img in images %}
+              {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
+              ({{img.upload_date}})<hr />
+          {% endfor %}
         </div>
       </div>
     </body>
-</html>
+</html> -->
