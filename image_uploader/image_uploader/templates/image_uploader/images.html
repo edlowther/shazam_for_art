@@ -5,7 +5,8 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="new/" method="post">{% csrf_token %}
+    <form class="" action="new/" method="post" enctype="multipart/form-data">{% csrf_token %}
+      <input name="painting" type="file">
       <button type="submit" name="upload">Upload picture</button>
     </form>
   </body>

@@ -19,6 +19,3 @@ def test_upload_picture_button_seems_to_work(browser):
     button = browser.find_by_name('upload')
     button.click()
     assert browser.is_text_present('Picture uploaded successfully')
-
-# time.sleep(3)
-# browser.quit()
