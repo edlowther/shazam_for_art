@@ -1,6 +1,7 @@
 from sklearn import tree
 from sklearn import neural_network
 from sklearn import svm
+from sklearn.naive_bayes import GaussianNB
 
 from painting_analysis.lib.data_assembler import DataAssembler
 
@@ -24,6 +25,8 @@ class ModelBuilder:
             clf = neural_network.MLPClassifier()
         elif self.clf_type == "svm":
             clf = svm.SVC()
+        elif self.clf_type == "bayes":
+            clf = GaussianNB()
         if self.preloaded_data and self.preloaded_targets:
             clf.fit(self.preloaded_data, self.preloaded_targets)
         else:
