@@ -52,6 +52,23 @@ At a glance svm_pixels appeared to be the most effective algorithm in terms of p
 We tested existing code and created an effective TDD with higher test coverage in our analysis branch. We also researched Django using tutorials and began to build our front end website with Django. 
 
 
+## Friday: 
+We refactored existing code and increased test coverage. We continued with Django progressing into building a simple image upload form
+
+
+## Monday:
+We built a Django web app, complete with testing and began implementing some styling
+We continued to refine the machine learning and improve on our rate of probability 
+
+## Tuesday:
+We set out to complete a few key tasks:
+  1. Add the remainig features for the app - iRobArt, art movement, art recommendations based on input
+  2. Styling the front end
+  3. Connecting the front end with the logic an machine learning
+  4. Prepare the presentation - to get started and brainstorm ideas
+  
+
+
 
 
 
