@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,9 +7,13 @@
     <title></title>
   </head>
   <body>
+    <div id="content">
+            {% block content %}
     <form class="" action="new/" method="post" enctype="multipart/form-data">{% csrf_token %}
       <input name="painting" type="file">
       <button type="submit" name="upload">Upload picture</button>
     </form>
+    {% endblock %}
+    </div>
   </body>
 </html>
