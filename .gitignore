@@ -1,2 +1,6 @@
 .DS_Store
-*/*/__pycache__
+__pycache__
+models/neural_network.pkl
+images
+models
+media/svm_flatten_pixels_v3.pkl

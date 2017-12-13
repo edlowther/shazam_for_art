@@ -1,10 +1,20 @@
-from skimage import io
-from scripts.painting_processor import PaintingProcessor
-from sklearn.externals import joblib
+import os
+import glob
 
-test_image = io.imread('./test_images/lowry_179.jpg')
-clf = joblib.load('model.pkl')
-print(clf.predict([PaintingProcessor(test_image).flatten()]))
+from scripts.stats_generator import StatsGenerator
+from scripts.artist_lookup import artist_lookup
+
+clf_type = "svm"
+
+test_image_filenames = os.listdir('./test_images')
+stats_generator = StatsGenerator(test_image_filenames, clf_type)
+stats_generator.get_accuracy_of_model()
+
+# for artist_name in artist_lookup:
+# number_to_keep = 80
+# for artist_name in artist_lookup:
+#     for filename in glob.glob('./images/{}*.jpg'.format(artist_name))[number_to_keep:]:
+#         os.rename(filename, filename.replace("/images/", "/images_all/"))
 
 # test_image = io.imread('./images/hopper_124.jpg')
 # print(test_image)
