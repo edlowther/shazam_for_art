@@ -16,39 +16,17 @@ def new(request):
     painting = request.FILES['painting']
     image_relative_filepath = default_storage.save('tmp/image_to_test.jpg', ContentFile(painting.read()))
     image_absolute_filepath = os.path.join(settings.MEDIA_ROOT, image_relative_filepath)
-    predicted_artist_name = make_prediction(image_absolute_filepath)
-    predicted_movement = get_movement(image_absolute_filepath)
+    painting_data = load_image(image_absolute_filepath)
+    grid_colour_means = get_grid_colour_means(painting_data)
+    predicted_artist_name = make_prediction(grid_colour_means)
+    predicted_movement = get_movement(grid_colour_means)
     return render(request, 'image_uploader/success.html', {'name': predicted_artist_name, 'movement': predicted_movement})
 
+def load_image(image_absolute_filepath):
+    return io.imread(image_absolute_filepath)
 
-def make_prediction(image_absolute_filepath):
-    ARTISTS = ["Constable", "Hopper", "Kandinsky" ,"Lowry", "Monet", "Rembrandt", "Rothko", "Rubens", "Turner", "Van Gogh"]
-    painting_data = io.imread(image_absolute_filepath)
-    clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'svm_flatten_pixels_v3.pkl'))
-    resized_painting = resize(painting_data, (200, 200))
-    painting_flattened = []
-    for row in resized_painting:
-        for pixel in row:
-            for colour in pixel:
-                painting_flattened.append(colour)
-    result = clf.predict([painting_flattened])
-    return ARTISTS[result[0]]
-
-def get_movement(image_absolute_filepath):
-    MOVEMENTS = ['Expressionistic cubism',
-                 'Romantic colour fields',
-                 'Impressionistic cloisonnism',
-                 'Expressionistic colour fields',
-                 'Cloisonnism-cubism',
-                 'Baroque colour fields',
-                 'Cloisonnistic colour fields',
-                 'Expressionistic-cloisonnistic colour fields',
-                 'Orangey-red colour fields',
-                 'Paler colour fields'
-                 ]
+def get_grid_colour_means(painting_data):
     GRID_WIDTH = 20
-    painting_data = io.imread(image_absolute_filepath)
-    clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'unsupervised.pkl'))
     resized_painting = resize(painting_data, (200, 200))
     result = []
     for i in range(10):
@@ -61,5 +39,27 @@ def get_movement(image_absolute_filepath):
             result.append(grid[:, :, 0].mean())
             result.append(grid[:, :, 1].mean())
             result.append(grid[:, :, 2].mean())
-    result = clf.predict([result])
+    return result
+
+def make_prediction(grid_colour_means):
+    ARTISTS = ["Cezanne", "Gauguin", "Kandinsky" ,"Rembrandt", "Rothko"]
+    clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'neural_network_grid_colour_means_v7.pkl'))
+    result = clf.predict([grid_colour_means])
+    return ARTISTS[result[0]]
+
+def get_movement(grid_colour_means):
+    MOVEMENTS = ['Expressionistic cubism',
+                 'Romantic colour fields',
+                 'Impressionistic cloisonnism',
+                 'Expressionistic colour fields',
+                 'Cloisonnism-cubism',
+                 'Baroque colour fields',
+                 'Cloisonnistic colour fields',
+                 'Expressionistic-cloisonnistic colour fields',
+                 'Orangey-red colour fields',
+                 'Paler colour fields'
+                 ]
+
+    clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'unsupervised.pkl'))
+    result = clf.predict([grid_colour_means])
     return MOVEMENTS[result[0]]
