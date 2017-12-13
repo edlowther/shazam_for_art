@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,9 +7,15 @@
     <title></title>
   </head>
   <body>
-    <p>{{name}}</p>
-    <p>{{movement}}</p>
+    <div id="content">
+            {% block content %}
+
+    <div class="frame">
     <img src="../../../media/tmp/image_to_test.jpg" alt="Painting picture">
-    <p>Picture uploaded successfully</p>
+    <div> </div>
+        <p>{{name}}</p>
+        <p>{{movement}}</p>
+      {% endblock %}
+      </div>
   </body>
 </html>
