@@ -7,16 +7,18 @@ from painting_analysis.lib.data_loader import DataLoader
 # method = 'flatten_pixels' # available options: flatten_pixels ; grayscale_hog
 reshuffle_training_data = False
 
-# for method in ["flatten_pixels", "grayscale_hog"]:
-for method in ["texture"]:
-    # data_loader = DataLoader(method, './images/training_data/')
-    # paintings_data = data_loader.load_paintings()
-    # targets = data_loader.load_targets()
-    for clf_type in ["svm", "tree"]:#, "neural_network"]:
-    # for clf_type in ["tree"]:
-        try:
-            clf = ModelBuilder(clf_type, method, reshuffle_training_data).build()
-            joblib.dump(clf, './models/{}_{}_v5.pkl'.format(clf_type, method))
-        except Exception as err:
-            print("failure on", clf_type, method)
-            print(err)
+for method in ["flatten_pixels",
+                "grayscale_hog",
+                "daisy",
+                "grayscale_histogram",
+                "colour_histogram",
+                "colour_means",
+                "grid_simple_means",
+                "grid_colour_means"]:
+    # for clf_type in ["svm", "tree", "neural_network", "bayes"]:
+    try:
+        clf = ModelBuilder(["svm", "tree", "neural_network", "bayes"], method, reshuffle_training_data).build()
+        # joblib.dump(clf, './models/{}_{}_v7.pkl'.format(clf_type, method))
+    except Exception as err:
+        print("failure on", method)
+        print(err)
