@@ -24,6 +24,7 @@ class DataLoader:
         targets = []
         for filename in os.listdir(self.directory_path):
             if not ".DS_Store" in filename:
+                # artist_name = filename.split("_")[0]
                 artist_name = filename.split("_")[0]
                 targets.append(self.artist_lookup[artist_name])
         return targets

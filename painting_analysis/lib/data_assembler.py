@@ -28,6 +28,7 @@ class DataAssembler:
             os.remove(filename)
         for artist in self.artist_lookup.keys():
             filenames = glob.glob('images/all/' + artist + '*')
+            print(artist, len(filenames))
             shuffle(filenames)
             for filename in filenames[:80]:
                 shutil.copy2(filename, 'images/training_data')
