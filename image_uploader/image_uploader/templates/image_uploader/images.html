@@ -5,15 +5,19 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+
   </head>
   <body>
     <div id="content">
-            {% block content %}
-    <form class="" action="new/" method="post" enctype="multipart/form-data">{% csrf_token %}
-      <input name="painting" type="file">
-      <button type="submit" name="upload">Upload picture</button>
-    </form>
-    {% endblock %}
+      {% block content %}
+      <form class="form_inputs" action="new/" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label id="upload_label" for="file-upload" class="custom-file-upload">Select your painting</label>
+        <input id="file-upload" class="inputs" name="painting" type="file">
+        <button class="inputs" type="submit" name="upload">Upload picture</button>
+      </form>
+     {% load static %}
+     <script src="{% static 'base.js' %}"></script>
+      {% endblock %}
     </div>
   </body>
 </html>

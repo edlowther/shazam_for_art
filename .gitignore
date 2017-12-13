@@ -3,3 +3,4 @@ __pycache__
 models/neural_network.pkl
 images
 models
+media/svm_flatten_pixels_v3.pkl

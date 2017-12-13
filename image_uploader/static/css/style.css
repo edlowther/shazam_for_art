@@ -1,0 +1,88 @@
+body{
+  background: url('http://www.photos-public-domain.com/wp-content/uploads/2011/04/white-canvas-fabric-texture.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  font-family: 'Lora', serif;
+}
+
+.pic { border: 1px solid #000; height: 600px; width: 600px; position: relative;}
+.img{ position:  top: 50%; margin: -63px 0 0 -182px;}
+
+#artvark{
+      margin-top: 550px;
+      margin-left: 46%;
+      margin-right: 45%;
+}
+
+#content {
+  margin:0 auto;
+  position: relative;
+  width: 200px;
+  text-align: center;
+}
+
+.inputs {
+  width: 200px;
+}
+
+#file-upload {
+    display: none;
+}
+
+.black-background {background-color:#000000;}
+.white {color:#ffffff;}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+img {
+  border:solid 2px;
+  border-bottom-color:#ffe;
+  border-left-color:#eed;
+  border-right-color:#eed;
+  border-top-color:#ccb;
+  max-height:100%;
+  max-width:100%;
+}
+
+.frame {
+  background-color:#ddc;
+  border:solid 5vmin #eee;
+  border-bottom-color:#fff;
+  border-left-color:#eee;
+  border-radius:2px;
+  border-right-color:#eee;
+  border-top-color:#ddd;
+  box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing:border-box;
+  display:inline-block;
+  margin:4vh 30vw;
+  height:75vh;
+  padding:6vmin;
+  position:relative;
+  text-align:center;
+  &:before {
+    border-radius:2px;
+    bottom:-2vmin;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+    content:"";
+    left:-2vmin;
+    position:absolute;
+    right:-2vmin;
+    top:-2vmin;
+  }
+  &:after {
+    border-radius:2px;
+    bottom:-2.5vmin;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+    content:"";
+    left:-2.5vmin;
+    position:absolute;
+    right:-2.5vmin;
+    top:-2.5vmin;
+  }
+}
