@@ -48,16 +48,11 @@ def make_prediction(grid_colour_means):
     return ARTISTS[result[0]]
 
 def get_movement(grid_colour_means):
-    MOVEMENTS = ['Expressionistic cubism',
-                 'Romantic colour fields',
-                 'Impressionistic cloisonnism',
-                 'Expressionistic colour fields',
-                 'Cloisonnism-cubism',
-                 'Baroque colour fields',
-                 'Cloisonnistic colour fields',
-                 'Expressionistic-cloisonnistic colour fields',
-                 'Orangey-red colour fields',
-                 'Paler colour fields'
+    MOVEMENTS = ['Baroque colour fields',
+                 'Abstract colour-cloisonnism',
+                 'Cubestract impressionism',
+                 'French cloisonnism-cubism',
+                 'Abstract luminism'
                  ]
 
     clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'unsupervised.pkl'))
