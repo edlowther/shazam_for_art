@@ -8,14 +8,17 @@
   </head>
   <body>
     <div id="content">
-            {% block content %}
-
-    <div class="frame">
-    <img src="../../../media/tmp/image_to_test.jpg" alt="Painting picture">
-    <div> </div>
-        <p>{{name}}</p>
-        <p>{{movement}}</p>
-      {% endblock %}
+    {% block content %}
+      <div class="img-label results">
+        <p>The ArtVark thinks this painting is by: {{name}}</p>
       </div>
+      <div class="img-container results">
+        <img id="main-img" class="frame" src="../../../media/tmp/image_to_test.jpg" alt="Painting picture">
+      </div>
+      <div class="img-label results">
+        <p>This is a classic example of the genre of {{movement}} (what?)</p>
+      </div>
+      {% endblock %}
+    </div>
   </body>
 </html>

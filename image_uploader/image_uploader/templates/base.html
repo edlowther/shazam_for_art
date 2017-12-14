@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>{% block title %} Artvark {% endblock %}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-     crossorigin="anonymous">
-    {% load static %}
-     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-    <!-- <script src="../../../static/base.js"></script> -->
-  </head>
-  <body>
-    <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <img src="{% static 'img/black_artvark.png' %}" alt="Black Artvark">
-    <h1 class="display-3"></h1>
-    <p class="lead">Artist finder and robot art historian.</p>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %} Artvark {% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+  <!-- <script src="../../../static/base.js"></script> -->
+</head>
+
+<body>
+  <!-- <div class="jumbotron jumbotron-fluid"> -->
+  <div id="banner">
+    <img class="banner-content frame frame-small" id="logo" src="{% static 'img/logo.png' %}" alt="Artvark logo">
+    <div class="banner-content">
+      <h1 class="headline">ArtVark</h1>
+      <p class="lead">Identify an artist from a photo of a painting</p>
+    </div>
   </div>
-</div>
-    <div class="bg"></div>
-    <div id="content">
-            {% block content %} {% endblock %}
-        </div>
-        <p class="py-5 text-center">
-  </body>
+  <!-- </div> -->
+  <div class="bg"></div>
+  <div id="content">
+    {% block content %} {% endblock %}
+  </div>
+  <p class="py-5 text-center">
+</body>
+
 </html>
