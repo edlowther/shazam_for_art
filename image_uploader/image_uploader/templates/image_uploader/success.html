@@ -18,6 +18,20 @@
       <div class="img-label results">
         <p>This is a classic example of the genre of {{movement}} (what?)</p>
       </div>
+      <div id="genre-container">
+        <h1>ArtVark-generated art movements</h1>
+        <p>The ArtVark has examined the painting you uploaded and grouped it along with the following images, which to it appear very similar:</p>
+        <div class="results">
+          {% load static %}
+          <img id="genre-img-1" class="frame" src="{% static image_path_0 %}" alt="Painting picture">
+        </div>
+        <div class="results">
+          <img id="genre-img-2" class="frame" src="{% static image_path_1 %}" alt="Painting picture">
+        </div>
+        <div class="results">
+          <img id="genre-img-3" class="frame" src="{% static image_path_2 %}" alt="Painting picture">
+        </div>
+      </div>
       {% endblock %}
     </div>
   </body>

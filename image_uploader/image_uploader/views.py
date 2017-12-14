@@ -20,7 +20,24 @@ def new(request):
     grid_colour_means = get_grid_colour_means(painting_data)
     predicted_artist_name = make_prediction(grid_colour_means)
     predicted_movement = get_movement(grid_colour_means)
-    return render(request, 'image_uploader/success.html', {'name': predicted_artist_name, 'movement': predicted_movement})
+    image_paths = get_image_paths(predicted_movement)
+    args = {
+        'name': predicted_artist_name,
+        'movement': predicted_movement
+    }
+    for index, path in enumerate(image_paths):
+        args['image_path_' + str(index)] = path
+    return render(request, 'image_uploader/success.html', args)
+
+def get_image_paths(predicted_movement):
+    IMAGE_PATHS = {
+        'Cubestract impressionism': ['img/movements/kandinsky_122.jpg', 'img/movements/rothko_60.jpg', 'img/movements/gauguin_28.jpg'],
+        'Baroque colour fields': ['img/movements/kandinsky_36.jpg', 'img/movements/rembrandt_98.jpg', 'img/movements/rothko_10.jpg'],
+        'French cloisonnism-cubism': ['img/movements/gauguin_63.jpg', 'img/movements/kandinsky_112.jpg', 'img/movements/rembrandt_14.jpg'],
+        'Abstract colour-cloisonnism': ['img/movements/kandinsky_6.jpg', 'img/movements/kandinsky_75.jpg', 'img/movements/rothko_63.jpg'],
+        'Abstract luminism': ['img/movements/gauguin_15.jpg', 'img/movements/gauguin_84.jpg', 'img/movements/rothko_91.jpg']
+    }
+    return IMAGE_PATHS[predicted_movement]
 
 def load_image(image_absolute_filepath):
     return io.imread(image_absolute_filepath)
@@ -48,12 +65,13 @@ def make_prediction(grid_colour_means):
     return ARTISTS[result[0]]
 
 def get_movement(grid_colour_means):
-    MOVEMENTS = ['Baroque colour fields',
-                 'Abstract colour-cloisonnism',
-                 'Cubestract impressionism',
-                 'French cloisonnism-cubism',
-                 'Abstract luminism'
-                 ]
+    MOVEMENTS = [
+                'Cubestract impressionism',
+                'Baroque colour fields',
+                'French cloisonnism-cubism',
+                'Abstract colour-cloisonnism',
+                'Abstract luminism',
+            ]
 
     clf = joblib.load(os.path.join(settings.MEDIA_ROOT, 'unsupervised.pkl'))
     result = clf.predict([grid_colour_means])
